@@ -1,33 +1,47 @@
 <p style="color: green"><%= notice %></p>
 
+<div class='wrapper'>
 <h1>All Events</h1>
+<div class="new-button">
+  <%= link_to "New Event", new_event_path, class: "new-event-button" %>
+</div>
 
 <h2>Recently Added Events</h2>
 <% if @recent_events.any? %>
-  <ul>
+  <div class="events-container">
     <% @recent_events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %> - <%= event.date %></li>
+      <div class="event-card">
+        <h3><%= link_to event.name, event_path(event) %></h3>
+        <p><%= event.date %></p>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <p>No events added in the last 30 days.</p>
 <% end %>
 
 <h2>Upcoming Events for Next Week</h2>
 <% if @upcoming_events.any? %>
-  <ul>
+  <div class="events-container">
     <% @upcoming_events.each do |event| %>
-      <li><%= link_to event.name, event_path(event) %> - <%= event.date %></li>
+      <div class="event-card">
+        <h3><%= link_to event.name, event_path(event) %></h3>
+        <p><%= event.date %></p>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
   <p>No upcoming events for the next week.</p>
 <% end %>
 
 <h2>All Events List</h2>
-<%= render @events %>
-
-<div>
-  <%= link_to "New Event", new_event_path %>
+<div class="events-container">
+  <% @events.each do |event| %>
+    <div class="event-card">
+      <h3><%= link_to event.name, event_path(event) %></h3>
+      <p><%= event.date %></p>
+    </div>
+  <% end %>
+</div>
 </div>
 
