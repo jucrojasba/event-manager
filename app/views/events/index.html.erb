@@ -1,16 +1,33 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, "Events" %>
+<h1>All Events</h1>
 
-<h1>Events</h1>
+<h2>Recently Added Events</h2>
+<% if @recent_events.any? %>
+  <ul>
+    <% @recent_events.each do |event| %>
+      <li><%= link_to event.name, event_path(event) %> - <%= event.date %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No events added in the last 30 days.</p>
+<% end %>
 
-<div id="events">
-  <% @events.each do |event| %>
-    <%= render event %>
-    <p>
-      <%= link_to "Show this event", event %>
-    </p>
-  <% end %>
+<h2>Upcoming Events for Next Week</h2>
+<% if @upcoming_events.any? %>
+  <ul>
+    <% @upcoming_events.each do |event| %>
+      <li><%= link_to event.name, event_path(event) %> - <%= event.date %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No upcoming events for the next week.</p>
+<% end %>
+
+<h2>All Events List</h2>
+<%= render @events %>
+
+<div>
+  <%= link_to "New Event", new_event_path %>
 </div>
 
-<%= link_to "New event", new_event_path %>
