@@ -15,7 +15,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = Event.new
+    @event = current_user.events.new  # Crear un evento asociado al usuario actual
   end
 
   # GET /events/1/edit
@@ -24,7 +24,7 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.new(event_params)  # Asignar el user_id al evento creado
 
     respond_to do |format|
       if @event.save
@@ -61,10 +61,12 @@ class EventsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_event
     @event = Event.find(params[:id])
   end
 
+  # Only allow a list of trusted parameters through.
   def event_params
     params.require(:event).permit(:name, :date, :description)
   end
