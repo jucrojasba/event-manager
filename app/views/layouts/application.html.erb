@@ -19,5 +19,7 @@
 
   <body>
     <%= yield %>
+    <%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete, data: { turbo: false } %>
+
   </body>
 </html>
