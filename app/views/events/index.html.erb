@@ -2,6 +2,7 @@
 
 <div class='wrapper'>
 <h1>All Events</h1>
+<%= link_to 'Cerrar sesión', destroy_user_session_path, method: :delete %>
 <div class="new-button">
   <%= link_to "New Event", new_event_path, class: "new-event-button" %>
 </div>
