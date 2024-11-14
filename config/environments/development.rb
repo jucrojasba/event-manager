@@ -81,12 +81,14 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    user_name: ENV['MAILTRAP_USERNAME'],      # Obtiene el user_name del .env
-    password: ENV['MAILTRAP_PASSWORD'],       # Obtiene el password del .env
-    address: ENV['MAILTRAP_ADDRESS'],         # Obtiene la dirección del .env
-    host: ENV['MAILTRAP_HOST'],               # Obtiene el host del .env
-    port: ENV['MAILTRAP_PORT'],               # Obtiene el puerto del .env
-    authentication: :login                    # Método de autenticación
+    user_name: ENV['MAILTRAP_USERNAME'],      
+    password: ENV['MAILTRAP_PASSWORD'],       
+    address: 'smtp.gmail.com',
+    domain: 'gmail.com',        
+    port: 587,               
+    authentication: 'login',
+    enable_starttls_auto: true,
+    openssl_verify_mode: 'none'              
   }
 
   # Establece la URL base para los correos en el entorno de desarrollo

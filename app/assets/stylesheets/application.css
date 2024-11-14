@@ -13,4 +13,44 @@
  *= require_tree .
  *= require_self
  */
- @import 'event.css'
+ @import 'event.css';
+
+ /* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: #333;
+    padding: 20px 20px;
+  }
+  
+  /* Link styles */
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    font-weight: bold;
+  }
+  
+  .nav-link:hover {
+    color: #ddd;
+  }
+  
+  /* Button link for logout */
+  .button-link {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .button-link:hover {
+    color: #ddd;
+  }
+  
+  /* Adjust button appearance to look like a link */
+  .button-link:focus {
+    outline: none;
+  }
+  

@@ -38,8 +38,8 @@
 
   .new-button{
     position:absolute;
-    top:15px;
-    left:12px;
+    top:20px;
+    right:30px;
   }
 
   .new-event-button {
